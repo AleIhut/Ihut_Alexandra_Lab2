@@ -4,6 +4,7 @@ using Ihut_Alexandra_Lab2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ihut_Alexandra_Lab2.Migrations
 {
     [DbContext(typeof(Ihut_Alexandra_Lab2Context))]
-    partial class Ihut_Alexandra_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221026123600_Author")]
+    partial class Author
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,6 +52,10 @@ namespace Ihut_Alexandra_Lab2.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("AuthorID")
                         .HasColumnType("int");
@@ -95,15 +101,13 @@ namespace Ihut_Alexandra_Lab2.Migrations
 
             modelBuilder.Entity("Ihut_Alexandra_Lab2.Models.Book", b =>
                 {
-                    b.HasOne("Ihut_Alexandra_Lab2.Models.Author", "Author")
+                    b.HasOne("Ihut_Alexandra_Lab2.Models.Author", null)
                         .WithMany("Books")
                         .HasForeignKey("AuthorID");
 
                     b.HasOne("Ihut_Alexandra_Lab2.Models.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherID");
-
-                    b.Navigation("Author");
 
                     b.Navigation("Publisher");
                 });
