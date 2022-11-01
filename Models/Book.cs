@@ -23,5 +23,7 @@ namespace Ihut_Alexandra_Lab2.Models
 
         public int? AuthorID { get; set; } //cheia straina
         public Author? Author { get; set; } //navigation proparty
+
+        public ICollection<BookCategory>? BookCategories { get; set; }
     }
 }
