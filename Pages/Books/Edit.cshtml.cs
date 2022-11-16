@@ -8,9 +8,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Ihut_Alexandra_Lab2.Data;
 using Ihut_Alexandra_Lab2.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Ihut_Alexandra_Lab2.Pages.Books
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : BookCategoriesPageModel
     {
         private readonly Ihut_Alexandra_Lab2.Data.Ihut_Alexandra_Lab2Context _context;

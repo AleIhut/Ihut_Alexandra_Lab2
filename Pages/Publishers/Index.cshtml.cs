@@ -8,9 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Ihut_Alexandra_Lab2.Data;
 using Ihut_Alexandra_Lab2.Models;
 using Ihut_Alexandra_Lab2.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Ihut_Alexandra_Lab2.Pages.Publishers
 {
+    [Authorize(Roles = "Admin")]
     public class IndexModel : PageModel
     {
         private readonly Ihut_Alexandra_Lab2.Data.Ihut_Alexandra_Lab2Context _context;

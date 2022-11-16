@@ -10,9 +10,12 @@ namespace Ihut_Alexandra_Lab2.Models
     {
         public int ID { get; set; }
         [Display(Name = "Book Title")]
+        [StringLength(150, MinimumLength = 3)]
+        [Required(ErrorMessage ="Titlul e obligatoriu")]
         public string Title { get; set; }
         //public string Author { get; set; }
         [Column(TypeName = "decimal(6, 2)")]
+        [Range(0.01, 500)]
         public decimal Price { get; set; }
 
 
@@ -23,7 +26,7 @@ namespace Ihut_Alexandra_Lab2.Models
 
         public int? AuthorID { get; set; } //cheia straina
         public Author? Author { get; set; } //navigation proparty
-
+        public Borrowing? Borrowing { get; set; }
         public ICollection<BookCategory>? BookCategories { get; set; }
     }
 }
